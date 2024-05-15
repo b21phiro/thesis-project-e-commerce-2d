@@ -1,5 +1,5 @@
-const time = 10000, // 10 seconds.
-      iterations = 3;
+let time = 0, // 10 seconds.
+    iterations = 0;
 
 let measurement = {};
 
@@ -11,7 +11,7 @@ let intervalID = null,
     timeoutID = null,
     requestAnimationFrameID = null;
 
-function start() {
+function _start() {
 
     // Create the measurement if this is the first iteration.
     if (currentIteration <= 0) {
@@ -75,7 +75,7 @@ function _addDataToMeasurement(data) {
     measurement.data.push(data);
 }
 
-function reset() {
+function _reset() {
     frames = 0;
     seconds = 0;
     // Stops and resets all the intervals, timeouts and loops.
@@ -92,12 +92,12 @@ function _stop() {
     _addDataToMeasurement({ fps: _calculateAverageFrameTime(frames, seconds)});
 
     // Resets the measurement timers.
-    reset();
+    _reset();
 
     if (currentIteration < iterations) {
 
         // Start next iteration.
-        start();
+        _start();
 
     } else {
 
@@ -137,4 +137,10 @@ function _sendToServer(data) {
 
 }
 
-export { start };
+function init(_seconds, _iterations = 1) {
+    time = _seconds * 1000;
+    iterations = _iterations;
+    _start();
+}
+
+export { init };

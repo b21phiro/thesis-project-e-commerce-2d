@@ -30,6 +30,6 @@ window.onload = () => {
     //loadTimeMeasurement.end();
 
     // Measures the framerate.
-    framerateMeasurement.start();
+    framerateMeasurement.init(5, 5);
 
 };

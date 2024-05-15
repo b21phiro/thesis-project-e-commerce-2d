@@ -2,13 +2,15 @@ import './style.css';
 import Product from "./assets/js/product";
 import {title} from "./assets/js/title";
 import {price} from "./assets/js/price";
+
 import * as loadTimeMeasurement from "./assets/js/loadTimeMeasurement";
+import {start} from "./assets/js/framerateJS";
 
 // The amount of products that we want to display.
 const amountOfProducts = 15;
 
 // Starts measuring the load time.
-loadTimeMeasurement.init(2, amountOfProducts);
+// loadTimeMeasurement.init(2, amountOfProducts);
 
 window.onload = () => {
 
@@ -25,6 +27,9 @@ window.onload = () => {
 
     // Calculates the duration of the
     // load-time from start.
-    loadTimeMeasurement.end();
+    // loadTimeMeasurement.end();
+
+    // Measures the framerate.
+    start();
 
 };

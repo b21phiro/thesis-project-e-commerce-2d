@@ -2,9 +2,9 @@
   "name": "thesis-project-e-commerce-2d",
   "version": "1.0.0",
   "description": "Thesis project. A simple ecomerce site with traditional 2D-rendered products.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "server": "node index.js",
+    "server": "node server.js",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack --watch --config webpack.config.js"
   },

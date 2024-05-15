@@ -2,12 +2,13 @@ import './style.css';
 import Product from "./assets/js/product";
 import {title} from "./assets/js/title";
 import {price} from "./assets/js/price";
-import * as responseTimeMeasurement from "./assets/js/measurement";
+import * as loadTimeMeasurement from "./assets/js/loadTimeMeasurement";
 
 // The amount of products that we want to display.
 const amountOfProducts = 15;
 
-responseTimeMeasurement.init(2, amountOfProducts);
+// Starts measuring the load time.
+loadTimeMeasurement.init(2, amountOfProducts);
 
 window.onload = () => {
 
@@ -22,6 +23,8 @@ window.onload = () => {
         items.appendChild(li);
     }
 
-    responseTimeMeasurement.end();
+    // Calculates the duration of the
+    // load-time from start.
+    loadTimeMeasurement.end();
 
 };

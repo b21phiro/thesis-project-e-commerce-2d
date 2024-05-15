@@ -3,7 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
-const fs = require('fs');
+const { saveAsLoadTimeMeasurement} = require("./server/measurementFile");
 
 app.use('/', express.static('dist'))
 
@@ -19,23 +19,7 @@ app.get('/*', (req, res) => {
 
 app.post('/save-measurement', (req, res) => {
 
-    const file = path.resolve(__dirname, `./measurements/measurement_${Date.now()}.json`);
-
-    req.body.meta.system = req.headers["user-agent"];
-
-    const json = JSON.stringify(req.body);
-
-    // Save the JSON file.
-    fs.writeFile(file, json, 'utf-8', (err) => {
-
-        if (err) {
-            console.error(err);
-            res.sendStatus(500);
-        } else {
-            res.sendStatus(200);
-        }
-
-    });
+    saveAsLoadTimeMeasurement(req);
 
 });
 

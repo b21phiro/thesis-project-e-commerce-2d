@@ -25,6 +25,30 @@ function saveAsLoadTimeMeasurement(req, onSuccess = null) {
 
 }
 
+function saveAsFrameTimeMeasurement(req, onSuccess = null) {
+
+    // Set the filename of the measurement.
+    const dir = _baseDirectory + `/frame_times/`;
+    const file = dir + `frame_time_measurement_${Date.now()}.json`;
+
+    // Creates the folder if it does not exist.
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+
+    // Set the data.
+    const data = req.body;
+    data.meta = {};
+    data.meta.system = req.headers["user-agent"];
+
+    // Add the data of the measurement.
+    const json = JSON.stringify(data);
+
+    // Attempts to save the file in base-directory.
+    save(file, json, onSuccess);
+
+}
+
 function save(filename, json, onSuccess = null) {
 
     // Save the JSON file.
@@ -43,4 +67,4 @@ function save(filename, json, onSuccess = null) {
 
 }
 
-module.exports = { saveAsLoadTimeMeasurement };
+module.exports = { saveAsLoadTimeMeasurement, saveAsFrameTimeMeasurement };

@@ -95,23 +95,20 @@ function getCurrentIndex() {
 /**
  * Sends the measurement to the server.
  */
-function sendToServer() {
+function sendToServer(data) {
 
     console.log("Sending load-time-measurement to the server...")
-
-    // Get the measurement.
-    const measurement = getData();
 
     // Reset the measurement first.
     reset();
 
     // Send it.
-    return fetch('/save-measurement', {
+    return fetch('/save-measurement-loadtime', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(measurement)
+        body: JSON.stringify(data)
     });
 
 }
@@ -138,8 +135,11 @@ function end() {
 
         // No...
 
+        // Get the measurement.
+        const measurement = getData();
+
         // Save and send the measurement to the server.
-        sendToServer()
+        sendToServer(measurement)
             .then(() => {
                 console.log("Sent!");
             });

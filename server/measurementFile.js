@@ -14,11 +14,13 @@ function saveAsLoadTimeMeasurement(req, onSuccess = null) {
         fs.mkdirSync(dir);
     }
 
-    // Add the data of the measurement.
-    const json = JSON.stringify(req.body);
+    // Set the data.
+    const data = req.body;
+    data.meta = {};
+    data.meta.system = req.headers["user-agent"];
 
-    // Add the meta to the measurement.
-    req.body.meta.system = req.headers["user-agent"];
+    // Add the data of the measurement.
+    const json = JSON.stringify(data);
 
     // Attempts to save the file in base-directory.
     save(file, json, onSuccess);

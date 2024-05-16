@@ -10,7 +10,7 @@ import * as framerateMeasurement from "./assets/js/framerateMeasurement";
 const amountOfProducts = 15;
 
 // Starts measuring the load time.
-// loadTimeMeasurement.init(2, amountOfProducts);
+loadTimeMeasurement.init(15, amountOfProducts);
 
 window.onload = () => {
 
@@ -27,7 +27,7 @@ window.onload = () => {
 
     // Calculates the duration of the
     // load-time from start.
-    // loadTimeMeasurement.end();
+    loadTimeMeasurement.end();
 
     // Measures the framerate.
     // framerateMeasurement.init(5, 5);

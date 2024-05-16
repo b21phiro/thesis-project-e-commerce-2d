@@ -19,11 +19,13 @@ app.get('/*', (req, res) => {
 
 app.post('/save-measurement-loadtime', (req, res) => {
     saveAsLoadTimeMeasurement(req);
+    console.log("Saved file!");
     res.sendStatus(200);
 });
 
 app.post('/save-measurement-framerate', (req, res) => {
     saveAsFrameTimeMeasurement(req);
+    console.log("Saved file!");
     res.sendStatus(200);
 });
 

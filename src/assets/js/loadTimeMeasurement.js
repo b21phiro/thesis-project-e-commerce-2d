@@ -142,6 +142,7 @@ function end() {
         sendToServer(measurement)
             .then(() => {
                 console.log("Sent!");
+                alert("Sent measurement to the server!");
             });
 
     }

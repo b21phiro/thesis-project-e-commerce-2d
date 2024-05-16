@@ -104,6 +104,7 @@ function _stop() {
         // End the measurement.
         _sendToServer(measurement).then(() => {
             console.log("Sent measurement to the server!");
+            alert("Sent measurement to the server!");
         });
     }
 

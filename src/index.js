@@ -5,7 +5,7 @@ import {price} from "./assets/js/price";
 import * as loadTimeMeasurement from "./assets/js/loadTimeMeasurement";
 
 // The amount of products that we want to display.
-const amountOfProducts = 18;
+const amountOfProducts = 18; // <-- Amount of products to display.
 
 // Starts measuring the load time.
 // loadTimeMeasurement.init(1000, amountOfProducts); <-- (1/2) Comment out this to measure load-times.
